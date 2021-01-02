@@ -22,12 +22,12 @@
             <label for="SignupPassword">Password</label>
             <input type="password" id="SignupPassword" name="password" class="form-control" placeholder="Password" [(ngModel)]="form1.password" required>
             <div class="alert alert-danger" [hidden]="!error.password">
-              {{ error.password }}
+              {{ error.password  }}
             </div>
           </div>
           <div class="form-group">
             <label for="SignupConfirmPassword">Confirm Password</label>
-            <input type="password" id="SignupConfirmPassword" name="password_confirmation" class="form-control" placeholder="Confirm Password" [(ngModel)]="form1.passwordConfirm" required>
+            <input type="password" id="SignupConfirmPassword" name="password_confirmation" class="form-control" placeholder="Confirm Password" [(ngModel)]="form1.password_confirmation" required>
           </div>
           <button type="submit" class="btn btn-primary" [disabled]="!SignupForm.valid">Create Account</button>
         </fieldset>
