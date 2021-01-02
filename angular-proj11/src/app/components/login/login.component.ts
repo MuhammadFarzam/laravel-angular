@@ -25,8 +25,11 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  errorHandling(error){
+  errorHandling(error:any){
       this.error = error.error.error;
+      setInterval(()=> {
+        this.error = false;
+      },5000);
   }
 
   ngOnInit(): void {

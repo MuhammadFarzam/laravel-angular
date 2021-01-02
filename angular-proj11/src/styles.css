@@ -8,3 +8,9 @@
 .ng-valid:not(form){
   border-left: 4px solid green;
 }
+
+/* .form-control:focus{
+    border-top: 1px solid #ced4da;
+    border-bottom: 1px solid #ced4da;
+    border-right: 1px solid #ced4da;
+} */

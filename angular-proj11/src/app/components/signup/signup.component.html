@@ -1,1 +1,37 @@
-<p>signup works!</p>
+<div class="mt-4 col-6 offset-3">
+  <div class="card">
+    <div class="card-header">Sign up Here</div>
+    <div class="card-body ml-4 mr-4">
+      <form #SignupForm="ngForm" (ngSubmit)="signupSubmit()">
+        <fieldset>
+          <div class="form-group">
+            <label for="SignupUsername">Name</label>
+            <input type="text" id="SignupUsername" name='name' class="form-control" placeholder="Fullname" [(ngModel)]="form1.name" required>
+            <div class="alert alert-danger" [hidden]="!error.name">
+              {{ error.name }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="SignupEmail">Email</label>
+            <input type="email" id="SignupEmail" name="email" class="form-control" placeholder="Email" [(ngModel)]="form1.email" required>
+            <div class="alert alert-danger" [hidden]="!error.email">
+              {{ error.email }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="SignupPassword">Password</label>
+            <input type="password" id="SignupPassword" name="password" class="form-control" placeholder="Password" [(ngModel)]="form1.password" required>
+            <div class="alert alert-danger" [hidden]="!error.password">
+              {{ error.password }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="SignupConfirmPassword">Confirm Password</label>
+            <input type="password" id="SignupConfirmPassword" name="password_confirmation" class="form-control" placeholder="Confirm Password" [(ngModel)]="form1.passwordConfirm" required>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!SignupForm.valid">Create Account</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
