@@ -1,0 +1,6 @@
+#After setup project by using clong Github
+1: composer install
+2: npm i in angular directory //cd angular-proj11
+3: cp .env.example .env //Edit config according to local environment
+4: php artisan key:generate
+5: php artisan jwt:secret
