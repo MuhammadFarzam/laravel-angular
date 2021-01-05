@@ -1,5 +1,7 @@
 import { HttpClient} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApproutingService } from 'src/app/services/approuting.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,14 +18,13 @@ export class SignupComponent implements OnInit {
   }
 
   public error:any = [];
-  constructor(private http:HttpClient) { }
+  constructor(private approuting: ApproutingService, private route: Router) { }
 
   ngOnInit(): void {
   }
 
   signupSubmit(){
-    console.log('as');
-    return this.http.post('http://127.0.0.1:8000/api/signup',this.form1).subscribe(
+    this.approuting.signup(this.form1).subscribe(
       data => console.log(data),
       err => this.errorHandling(err)
     );

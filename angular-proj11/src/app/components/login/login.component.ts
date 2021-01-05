@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApproutingService } from 'src/app/services/approuting.service';
+import { TokenService } from 'src/app/services/token.service';
 
 
 @Component({
@@ -16,13 +18,22 @@ export class LoginComponent implements OnInit {
   }
   public error:any = null;
 
-  constructor(private http: HttpClient,private route:Router) { }
+  constructor(
+    private approuting: ApproutingService,
+    private token: TokenService,
+    private route: Router,
+    ) { }
 
   loginSubmit(){
-    return this.http.post('http://127.0.0.1:8000/api/login',this.form).subscribe(
-      data => console.log(data),
+    this.approuting.login(this.form).subscribe(
+      data => this.handleResponse(data),
       error => this.errorHandling(error)
     );
+  }
+
+  handleResponse(data){
+     this.token.handle(data.access_token);
+     this.route.navigateByUrl('/profile');
   }
 
   errorHandling(error:any){

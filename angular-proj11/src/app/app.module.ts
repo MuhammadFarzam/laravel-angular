@@ -11,6 +11,8 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { ApproutingService } from './services/approuting.service';
+import { TokenService } from './services/token.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,10 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    ApproutingService,
+    TokenService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
