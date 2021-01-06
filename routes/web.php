@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Helpers\SingletonPattern;
+use App\Mail\SendTestingEmail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +26,9 @@ Route::get('/singleton', function(){
     $classObj2 = SingletonPattern::setFoo('Hello,world again');
 
     return nl2br('FirstObjCall => '.$classObj->foo()."\n SecondObjCall => ".$classObj2->foo());
+});
+
+Route::get('/sendemail',function(){
+     Mail::to('farzam.muhammad@gmail.com')->send(new SendTestingEmail());
+     return "Email has been send";
 });
