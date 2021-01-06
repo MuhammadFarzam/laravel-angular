@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Helpers\SingletonPattern;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::get('/singleton', function(){
+    $classObj = SingletonPattern::setFoo('Hello,World');
+    $classObj2 = SingletonPattern::setFoo('Hello,world again');
+
+    return nl2br('FirstObjCall => '.$classObj->foo()."\n SecondObjCall => ".$classObj2->foo());
 });

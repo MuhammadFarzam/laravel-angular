@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Helpers\SingletonPattern;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(SingletonPattern::class,function(){
+           return new SingletonPattern();
+        });
+        // $this->app->singleton(SingletonPattern::class,function(){
+        //     return new SingletonPattern('Hello, foo!');
+        //  });
     }
 
     /**
