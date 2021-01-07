@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Helpers\SingletonPattern;
+use App\Jobs\SendEmailJob;
+use Carbon\Carbon;
 use App\Mail\SendTestingEmail;
 use Illuminate\Support\Facades\Mail;
 
@@ -29,6 +31,7 @@ Route::get('/singleton', function(){
 });
 
 Route::get('/sendemail',function(){
-     Mail::to('farzam.muhammad@gmail.com')->send(new SendTestingEmail());
+     $job = (new SendEmailJob())->delay(Carbon::now()->addSeconds(10));
+     dispatch($job);
      return "Email has been send";
 });
