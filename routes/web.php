@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('charts',function(){
+   return view('highcharts');
+});
+
 
 Route::get('/singleton', function(){
     $classObj = SingletonPattern::setFoo('Hello,World');
